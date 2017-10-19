@@ -1,0 +1,32 @@
+package com.tdw.transaction.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
+import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
+
+@Configuration
+public class SpringMongoConfig {
+
+	@Autowired
+	MongoDbFactory mongoDbFactory;
+
+	@Bean
+	MongoTemplate mongoTemplate() throws Exception {
+
+		// remove _class
+		@SuppressWarnings("deprecation")
+		MappingMongoConverter converter = new MappingMongoConverter(mongoDbFactory, new MongoMappingContext());
+		converter.setTypeMapper(new DefaultMongoTypeMapper(null));
+
+		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory, converter);
+
+		return mongoTemplate;
+
+	}
+
+}

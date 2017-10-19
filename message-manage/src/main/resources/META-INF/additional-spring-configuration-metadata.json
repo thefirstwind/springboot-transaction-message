@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "presend.back.threshods",
+    "type": "java.lang.String",
+    "description": "A description for 'presend.back.threshods'"
+  },
+  {
+    "name": "result.back.threshods",
+    "type": "java.lang.String",
+    "description": "A description for 'result.back.threshods'"
+  },
+  {
+    "name": "send.threshods",
+    "type": "java.lang.String",
+    "description": "A description for 'send.threshods'"
+  }
+]}
